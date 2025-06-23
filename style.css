@@ -52,12 +52,34 @@ body { font-family: var(--font-body); color: var(--dark-text); background-color:
 
 /* --- CONTENT PAGES (for how.html, what.html, etc.) --- */
 .page-content { padding: 4rem 1rem; }
-.page-content h1 { font-family: var(--font-heading); font-size: 2.8rem; margin-bottom: 1.5rem; color: var(--accent-red); text-align: center; }
-.page-content h2 { font-family: var(--font-heading); font-size: 1.8rem; margin-top: 2.5rem; margin-bottom: 1rem; border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; color: var(--primary-teal); }
+.page-content h1 {
+    font-family: var(--font-heading);
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--accent-red);
+    /* text-align: center;  <-- REMOVED to align left */
+}
+.page-content h2 {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+    color: var(--primary-teal);
+}
 .page-content p { margin-bottom: 1rem; max-width: 800px; }
 .page-content ul { list-style-position: outside; margin-left: 1.5rem; margin-bottom: 1.5rem; max-width: 800px; }
 .page-content li { margin-bottom: 0.75rem; }
-.featured-illustration { display: block; max-width: 650px; width: 100%; height: auto; margin: 2.5rem auto 3.5rem auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); }
+.featured-illustration {
+    display: block;
+    max-width: 650px;
+    width: 100%;
+    height: auto;
+    margin: 2.5rem 0 3.5rem 0; /* CHANGED: 'auto' removed to align left */
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
 
 /* --- RESPONSIVE STYLES --- */
 @media (max-width: 992px) {
@@ -76,7 +98,12 @@ body { font-family: var(--font-body); color: var(--dark-text); background-color:
     #menu-toggle:checked + .nav-container .hamburger-menu .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
     #menu-toggle:checked + .nav-container .hamburger-menu .bar:nth-child(2) { opacity: 0; }
     #menu-toggle:checked + .nav-container .hamburger-menu .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+    
+    .hero-section {
+        background-position: left center;
+    }
     .hero-section .slogan { font-size: 2.5rem; }
     .hero-section .sub-slogan { font-size: 1.1rem; }
+
     .page-content h1 { font-size: 2.2rem; }
 }
