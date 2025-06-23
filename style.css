@@ -1,0 +1,82 @@
+/* LearnStatistics.online - Main Stylesheet */
+
+/* --- DESIGN TOKENS (Based on your color palette) --- */
+:root {
+    --primary-teal: #6daeab;
+    --accent-yellow: #ffcb04;
+    --accent-red: #9f2b3a; 
+    --dark-text: #2c3e50;
+    --light-text: #ffffff;
+    --light-gray-bg: #f8f9fa;
+    --border-color: #e0e0e0;
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Roboto', sans-serif;
+    --nav-height: 70px;
+}
+
+/* --- GLOBAL RESET & BASE STYLES --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); color: var(--dark-text); background-color: var(--light-text); line-height: 1.6; }
+.container { width: 90%; max-width: 1200px; margin: 0 auto; }
+
+/* --- STICKY NAVIGATION BAR --- */
+.main-header { position: sticky; top: 0; z-index: 1000; background-color: var(--primary-teal); box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); height: var(--nav-height); display: flex; align-items: center; }
+.nav-container { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.logo img { height: 40px; width: auto; }
+.logo-text { font-family: var(--font-heading); font-weight: 800; font-size: 1.2rem; line-height: 1; color: var(--light-text); }
+.logo-domain { color: var(--accent-yellow); font-size: 0.9em; font-weight: 700; }
+.main-nav ul { display: flex; list-style: none; gap: 1.5rem; }
+.main-nav a { text-decoration: none; font-weight: 500; color: var(--light-text); position: relative; display: inline-block; overflow: hidden; white-space: nowrap; padding: 5px 0; }
+.main-nav .short-text, .main-nav .long-text { display: inline-block; transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); }
+.main-nav .long-text { max-width: 0; opacity: 0; }
+.main-nav a:hover .short-text { max-width: 0; opacity: 0; }
+.main-nav a:hover .long-text { max-width: 250px; opacity: 1; color: var(--accent-yellow); }
+.hamburger-menu { display: none; }
+#menu-toggle { display: none; }
+
+/* --- HERO SECTION (for index.html) --- */
+.hero-section { background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('students-bg.jpg') no-repeat center center; background-size: cover; text-align: center; padding: 6rem 1rem; min-height: calc(100vh - var(--nav-height)); display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.hero-section .slogan { font-family: var(--font-heading); font-size: 3.5rem; font-weight: 800; color: var(--accent-red); line-height: 1.2; max-width: 800px; margin-bottom: 1rem; text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+.hero-section .sub-slogan { font-size: 1.2rem; max-width: 600px; color: #444; margin-bottom: 3rem; font-weight: 500; }
+.action-button-container { position: relative; display: inline-block; height: 60px; font-family: var(--font-heading); font-weight: 700; }
+.main-button { display: flex; align-items: center; justify-content: center; background-color: var(--primary-teal); color: var(--light-text); padding: 18px 40px; border-radius: 50px; font-size: 1.2rem; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(109, 174, 171, 0.4); opacity: 1; transform: translateY(0); }
+.split-buttons { display: flex; gap: 1rem; position: absolute; top: 0; left: 50%; transform: translateX(-50%) translateY(20px); opacity: 0; pointer-events: none; transition: all 0.3s ease; }
+.action-button-container:hover .main-button { opacity: 0; transform: translateY(-20px); pointer-events: none; }
+.action-button-container:hover .split-buttons { opacity: 1; transform: translateX(-50%) translateY(0); pointer-events: all; }
+.split-buttons a { padding: 18px 35px; border-radius: 50px; font-size: 1.1rem; text-decoration: none; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: all 0.3s ease; white-space: nowrap; }
+.enroll-btn { background-color: var(--accent-yellow); color: var(--dark-text); }
+.login-btn { background-color: var(--light-text); color: var(--dark-text); border: 1px solid var(--border-color); }
+.split-buttons a:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+
+/* --- CONTENT PAGES (for how.html, what.html, etc.) --- */
+.page-content { padding: 4rem 1rem; }
+.page-content h1 { font-family: var(--font-heading); font-size: 2.8rem; margin-bottom: 1.5rem; color: var(--accent-red); text-align: center; }
+.page-content h2 { font-family: var(--font-heading); font-size: 1.8rem; margin-top: 2.5rem; margin-bottom: 1rem; border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; color: var(--primary-teal); }
+.page-content p { margin-bottom: 1rem; max-width: 800px; }
+.page-content ul { list-style-position: outside; margin-left: 1.5rem; margin-bottom: 1.5rem; max-width: 800px; }
+.page-content li { margin-bottom: 0.75rem; }
+.featured-illustration { display: block; max-width: 650px; width: 100%; height: auto; margin: 2.5rem auto 3.5rem auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); }
+
+/* --- RESPONSIVE STYLES --- */
+@media (max-width: 992px) {
+    .main-nav .short-text { max-width: 100px; opacity: 1; }
+    .main-nav .long-text { display: none; }
+    .main-nav a:hover { color: var(--accent-yellow); }
+    .main-nav a:hover .short-text { color: var(--accent-yellow); }
+}
+@media (max-width: 768px) {
+    .logo-text { font-size: 1rem; } .logo img { height: 35px; }
+    .main-nav ul { position: absolute; top: var(--nav-height); left: 0; width: 100%; background-color: var(--primary-teal); flex-direction: column; align-items: center; padding: 1rem 0; box-shadow: 0 5px 10px rgba(0,0,0,0.05); transform: translateY(-120%); transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); border-top: 1px solid rgba(255,255,255,0.2); }
+    #menu-toggle:checked ~ .nav-container .main-nav ul { transform: translateY(0); }
+    .main-nav a { font-size: 1.1rem; }
+    .hamburger-menu { display: block; cursor: pointer; }
+    .hamburger-menu .bar { display: block; width: 25px; height: 3px; margin: 5px auto; background-color: var(--light-text); transition: all 0.3s ease-in-out; }
+    #menu-toggle:checked + .nav-container .hamburger-menu .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    #menu-toggle:checked + .nav-container .hamburger-menu .bar:nth-child(2) { opacity: 0; }
+    #menu-toggle:checked + .nav-container .hamburger-menu .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+    .hero-section .slogan { font-size: 2.5rem; }
+    .hero-section .sub-slogan { font-size: 1.1rem; }
+    .page-content h1 { font-size: 2.2rem; }
+}
