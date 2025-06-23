@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How the Course is Organised - LearnStatistics.online</title>
+
+    <!-- Google Fonts (same as main page) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- DESIGN TOKENS (Identical to main page for consistency) --- */
+        :root {
+            --primary-teal: #6daeab;
+            --accent-yellow: #ffcb04;
+            --accent-red: #9f2b3a; 
+            --dark-text: #2c3e50;
+            --light-text: #ffffff;
+            --light-gray-bg: #f8f9fa;
+            --border-color: #e0e0e0;
+            --font-heading: 'Poppins', sans-serif;
+            --font-body: 'Roboto', sans-serif;
+            --nav-height: 70px;
+        }
+
+        /* --- GLOBAL & NAV STYLES (Identical to main page) --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-body); color: var(--dark-text); background-color: var(--light-text); line-height: 1.6; }
+        .container { width: 90%; max-width: 1100px; margin: 0 auto; }
+        .main-header { position: sticky; top: 0; z-index: 1000; background-color: var(--primary-teal); box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); height: var(--nav-height); display: flex; align-items: center; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+        .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .logo img { height: 40px; width: auto; }
+        .logo-text { font-family: var(--font-heading); font-weight: 800; font-size: 1.2rem; line-height: 1; color: var(--light-text); }
+        .logo-domain { color: var(--accent-yellow); font-size: 0.9em; font-weight: 700; }
+        .main-nav ul { display: flex; list-style: none; gap: 1.5rem; }
+        .main-nav a { text-decoration: none; font-weight: 500; color: var(--light-text); position: relative; display: inline-block; overflow: hidden; white-space: nowrap; padding: 5px 0; }
+        .main-nav .short-text, .main-nav .long-text { display: inline-block; transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); }
+        .main-nav .long-text { max-width: 0; opacity: 0; }
+        .main-nav a:hover .short-text { max-width: 0; opacity: 0; }
+        .main-nav a:hover .long-text { max-width: 250px; opacity: 1; color: var(--accent-yellow); }
+        .hamburger-menu { display: none; }
+        #menu-toggle { display: none; }
+        
+        /* --- STYLES FOR CONTENT PAGES LIKE THIS ONE --- */
+        .page-content { padding: 4rem 1rem; }
+        .page-content h1 { font-family: var(--font-heading); font-size: 2.8rem; margin-bottom: 1.5rem; color: var(--primary-teal); }
+        .page-content h2 { font-family: var(--font-heading); font-size: 1.8rem; margin-top: 2.5rem; margin-bottom: 1rem; border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; }
+        .page-content p { margin-bottom: 1rem; max-width: 800px; }
+        .page-content ul { list-style-position: outside; margin-left: 1.5rem; margin-bottom: 1.5rem; }
+        .page-content li { margin-bottom: 0.75rem; }
+        
+        /* Responsive styles for content */
+        @media (max-width: 992px) {
+            .main-nav .short-text { max-width: 100px; opacity: 1; }
+            .main-nav .long-text { display: none; }
+            .main-nav a:hover { color: var(--accent-yellow); }
+            .main-nav a:hover .short-text { color: var(--accent-yellow); }
+        }
+        @media (max-width: 768px) {
+            .logo-text { font-size: 1rem; }
+            .logo img { height: 35px; }
+            .main-nav ul { position: absolute; top: var(--nav-height); left: 0; width: 100%; background-color: var(--primary-teal); flex-direction: column; align-items: center; padding: 1rem 0; box-shadow: 0 5px 10px rgba(0,0,0,0.05); transform: translateY(-120%); transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); border-top: 1px solid rgba(255,255,255,0.2); }
+            #menu-toggle:checked ~ .nav-container .main-nav ul { transform: translateY(0); }
+            .main-nav a { font-size: 1.1rem; }
+            .hamburger-menu { display: block; cursor: pointer; }
+            .hamburger-menu .bar { display: block; width: 25px; height: 3px; margin: 5px auto; background-color: var(--light-text); transition: all 0.3s ease-in-out; }
+            #menu-toggle:checked + .nav-container .hamburger-menu .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            #menu-toggle:checked + .nav-container .hamburger-menu .bar:nth-child(2) { opacity: 0; }
+            #menu-toggle:checked + .nav-container .hamburger-menu .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+            .page-content h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <input type="checkbox" id="menu-toggle">
+        <div class="nav-container container">
+            <a href="index.html" class="logo">
+                <img src="lso-logo.png" alt="LearnStatistics Online Logo">
+                <span class="logo-text">LearnStatistics<span class="logo-domain">.online</span></span>
+            </a>
+            
+            <label for="menu-toggle" class="hamburger-menu">
+                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+            </label>
+
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="how.html"><span class="short-text">How</span><span class="long-text">How the course is organised?</span></a></li>
+                    <li><a href="what.html"><span class="short-text">What</span><span class="long-text">What topics are covered?</span></a></li>
+                    <li><a href="who.html"><span class="short-text">Who</span><span class="long-text">Who are we?</span></a></li>
+                    <li><a href="pricing.html"><span class="short-text">How much</span><span class="long-text">Pricing</span></a></li>
+                    <li><a href="qa.html"><span class="short-text">Q&A</span><span class="long-text">Frequently Asked Questions</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="page-content">
+        <div class="container">
+            <h1>How The Course Is Organised</h1>
+            <p>Our learning system is designed for maximum flexibility and effectiveness, allowing you to learn at your own pace and focus on the areas you need most. The structure is built around a core philosophy of "learn, practice, and apply."</p>
+
+            <h2>A Flexible Learning Path</h2>
+            <p>You are in complete control of your learning journey. You can follow our recommended module order or jump directly to the topics that are most relevant to your goals.</p>
+            <ul>
+                <li><strong>Self-Paced Modules:</strong> Progress through the topics at a speed that suits you.</li>
+                <li><strong>No Prerequisites:</strong> Jump into any topic without needing to complete others first.</li>
+                <li><strong>Comprehensive Study Guide:</strong> Each topic is supported by a detailed, easy-to-understand study guide covering all necessary theory.</li>
+            </ul>
+
+            <h2>Interactive Components for Active Learning</h2>
+            <p>We believe in learning by doing. Our platform is rich with interactive tools to help you master the concepts.</p>
+            <ul>
+                <li><strong>Computer-Generated Quizzes:</strong> Test your knowledge with a wide range of quizzes that provide instant feedback.</li>
+                <li><strong>Interactive Demos:</strong> Visualize complex statistical concepts through dynamic demonstrations.</li>
+                <li><strong>Statistical Tables:</strong> Access all necessary statistical tables directly within the platform.</li>
+            </ul>
+
+            <h2>Expert Support & Practical Application</h2>
+            <p>Our course bridges the gap between theory and practice by integrating popular statistical software right into the learning process. The integrated help system ensures you're never stuck.</p>
+            <ul>
+                <li><strong>Software Integration:</strong> Learn to apply concepts using Matlab, Python, R, and Excel with provided examples.</li>
+                <li><strong>Integrated Help Links:</strong> Every quiz question links directly to the relevant section in the Study Guide, providing immediate clarification when you need it.</li>
+            </ul>
+        </div>
+    </main>
+
+</body>
+</html>
