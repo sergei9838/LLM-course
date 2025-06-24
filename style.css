@@ -14,30 +14,127 @@
     --nav-height: 70px;
 }
 
+/* --- NEW: Keyframes for Pulse Animation --- */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
 /* --- GLOBAL RESET & BASE STYLES --- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { font-family: var(--font-body); color: var(--dark-text); background-color: var(--light-text); line-height: 1.6; }
 .container { width: 90%; max-width: 1200px; margin: 0 auto; }
 
-/* --- STICKY NAVIGATION BAR --- */
-.main-header { position: sticky; top: 0; z-index: 1000; background-color: var(--primary-teal); box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); height: var(--nav-height); display: flex; align-items: center; }
-.nav-container { display: flex; justify-content: space-between; align-items: center; width: 100%; }
-.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-.logo img { height: 40px; width: auto; }
-.logo-text { font-family: var(--font-heading); font-weight: 800; font-size: 1.2rem; line-height: 1; color: var(--light-text); }
-.logo-domain { color: var(--accent-yellow); font-size: 0.9em; font-weight: 700; }
-.main-nav ul { display: flex; list-style: none; gap: 1.5rem; }
-.main-nav a { text-decoration: none; font-weight: 500; color: var(--light-text); position: relative; display: inline-block; overflow: hidden; white-space: nowrap; padding: 5px 0; }
-.main-nav .short-text, .main-nav .long-text { display: inline-block; transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); }
-.main-nav .long-text { max-width: 0; opacity: 0; }
-.main-nav a:hover .short-text { max-width: 0; opacity: 0; }
-.main-nav a:hover .long-text { max-width: 250px; opacity: 1; color: var(--accent-yellow); }
-.hamburger-menu { display: none; }
-#menu-toggle { display: none; }
+/* --- STICKY NAVIGATION BAR (UPDATED WITH TOOLTIP MENU) --- */
+.main-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: var(--primary-teal);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    height: var(--nav-height);
+    display: flex;
+    align-items: center;
+}
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    /* NEW: Adds 20px of space on the left and right sides */
+    padding: 0 20px; 
+}.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+.logo img {
+    height: 40px;
+    width: auto;
+}
+.logo-text {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 1.2rem;
+    line-height: 1;
+    color: var(--light-text);
+}
+.logo-domain {
+    color: var(--accent-yellow);
+    font-size: 0.9em;
+    font-weight: 700;
+}
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+}
+/* This is the key change: setting up the relative container for the tooltip */
+.main-nav li {
+    position: relative;
+}
+.main-nav a {
+    text-decoration: none;
+    font-weight: 500;
+    color: var(--light-text);
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+.main-nav a:hover {
+    color: var(--accent-yellow);
+}
+/* Hiding the short-text is no longer needed */
+.main-nav .short-text {
+    display: inline-block;
+}
+/* NEW: Styling the long-text as a tooltip */
+.main-nav .long-text {
+    position: absolute;
+    top: 130%; /* Position it below the menu item */
+    left: 50%;
+    transform: translateX(-50%) translateY(10px); /* Center it horizontally and move it down */
+    background-color: var(--dark-text);
+    color: var(--light-text);
+    padding: 8px 15px;
+    border-radius: 6px;
+    white-space: nowrap;
+    font-size: 0.9rem;
+    font-weight: 500;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+/* NEW: Adding the triangle pointer for the tooltip */
+.main-nav .long-text::after {
+    content: '';
+    position: absolute;
+    bottom: 100%; /* Position it at the top of the tooltip */
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent var(--dark-text) transparent;
+}
+/* NEW: Show the tooltip on list item hover */
+.main-nav li:hover .long-text {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0); /* Slide it up into place */
+}
+.hamburger-menu {
+    display: none;
+}
+#menu-toggle {
+    display: none;
+}
 
 /* --- HERO SECTION (for index.html) --- */
-.hero-section { background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('students-bg.jpg') no-repeat center center; background-size: cover; text-align: center; padding: 6rem 1rem; min-height: calc(100vh - var(--nav-height)); display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.hero-section { background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.6)), url('students-bg.jpg') no-repeat center center; background-size: cover; text-align: center; padding: 6rem 1rem; min-height: calc(100vh - var(--nav-height)); display: flex; flex-direction: column; justify-content: center; align-items: center; }
 .hero-section .slogan { font-family: var(--font-heading); font-size: 3.5rem; font-weight: 800; color: var(--accent-red); line-height: 1.2; max-width: 800px; margin-bottom: 1rem; text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
 .hero-section .sub-slogan { font-size: 1.2rem; max-width: 600px; color: #444; margin-bottom: 3rem; font-weight: 500; }
 .action-button-container { position: relative; display: inline-block; height: 60px; font-family: var(--font-heading); font-weight: 700; }
@@ -52,34 +149,44 @@ body { font-family: var(--font-body); color: var(--dark-text); background-color:
 
 /* --- CONTENT PAGES (for how.html, what.html, etc.) --- */
 .page-content { padding: 4rem 1rem; }
-.page-content h1 {
-    font-family: var(--font-heading);
-    font-size: 2.8rem;
-    margin-bottom: 1.5rem;
-    color: var(--accent-red);
-    /* text-align: center;  <-- REMOVED to align left */
-}
-.page-content h2 {
-    font-family: var(--font-heading);
-    font-size: 1.8rem;
-    margin-top: 2.5rem;
-    margin-bottom: 1rem;
-    border-bottom: 2px solid var(--border-color);
-    padding-bottom: 0.5rem;
-    color: var(--primary-teal);
-}
+.page-content h1 { font-family: var(--font-heading); font-size: 2.8rem; margin-bottom: 2rem; color: var(--accent-red); }
+.page-content h2 { font-family: var(--font-heading); font-size: 1.8rem; margin-top: 2.5rem; margin-bottom: 1.5rem; border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; color: var(--primary-teal); }
 .page-content p { margin-bottom: 1rem; max-width: 800px; }
 .page-content ul { list-style-position: outside; margin-left: 1.5rem; margin-bottom: 1.5rem; max-width: 800px; }
 .page-content li { margin-bottom: 0.75rem; }
-.featured-illustration {
-    display: block;
-    max-width: 650px;
-    width: 100%;
-    height: auto;
-    margin: 2.5rem 0 3.5rem 0; /* CHANGED: 'auto' removed to align left */
-    border-radius: 12px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+.featured-illustration { display: block; max-width: 650px; width: 100%; height: auto; margin: 2.5rem 0 3.5rem 0; border-radius: 12px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); }
+.profile-card { display: flex; align-items: center; gap: 2rem; margin-bottom: 2.5rem; }
+.profile-image { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; flex-shrink: 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+.profile-details p { margin-bottom: 0; }
+.qa-block { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border-color); }
+.qa-block:first-of-type { margin-top: 0; padding-top: 0; border-top: none; }
+.qa-content { display: flex; align-items: flex-start; gap: 2rem; }
+.qa-illustration { width: 250px; height: auto; border-radius: 8px; flex-shrink: 0; margin-top: 0.5rem; }
+.qa-text { flex-grow: 1; }
+.qa-block.image-right .qa-content { flex-direction: row-reverse; }
+.bottom-cta-section { text-align: center; padding: 3rem 1rem; margin-top: 4rem; border-top: 1px solid var(--border-color); background-color: var(--light-gray-bg); }
+
+/* --- Pricing Page Styles --- */
+.pricing-box { background-color: var(--light-gray-bg); border: 2px dashed var(--primary-teal); border-radius: 12px; padding: 2.5rem; text-align: center; margin: 2rem 0; }
+.pricing-box .price {
+    font-family: var(--font-heading); font-size: 4rem; font-weight: 800;
+    color: var(--accent-yellow); /* UPDATED: Color is now yellow */
+    line-height: 1.1;
+    animation: pulse 2s infinite ease-in-out; /* NEW: Added pulse animation */
 }
+.pricing-box .price-note { font-size: 1.2rem; font-weight: 500; color: var(--dark-text); margin-top: 0.5rem; margin-bottom: 1.5rem; }
+.pricing-box .price-subtext { color: #555; max-width: 600px; margin-left: auto; margin-right: auto; }
+.contact-box { margin-top: 3rem; padding: 2rem; border: 1px solid var(--border-color); border-radius: 8px; }
+.contact-box h2 { border-bottom: none; margin-top: 0; margin-bottom: 1rem; }
+.contact-form .form-group { margin-bottom: 1.5rem; text-align: left; }
+.contact-form label { display: block; margin-bottom: 0.5rem; font-weight: 500; }
+.contact-form input, .contact-form textarea { width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: 6px; font-family: var(--font-body); font-size: 1rem; }
+.contact-form textarea { resize: vertical; min-height: 120px; }
+.contact-form button {
+    display: inline-block; background-color: var(--primary-teal); color: var(--light-text); padding: 12px 30px; border: none;
+    border-radius: 50px; font-size: 1.1rem; font-weight: 500; cursor: pointer; transition: all 0.3s ease;
+}
+.contact-form button:hover { background-color: #5a9a97; transform: translateY(-2px); }
 
 /* --- RESPONSIVE STYLES --- */
 @media (max-width: 992px) {
@@ -98,12 +205,13 @@ body { font-family: var(--font-body); color: var(--dark-text); background-color:
     #menu-toggle:checked + .nav-container .hamburger-menu .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
     #menu-toggle:checked + .nav-container .hamburger-menu .bar:nth-child(2) { opacity: 0; }
     #menu-toggle:checked + .nav-container .hamburger-menu .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-    
-    .hero-section {
-        background-position: left center;
-    }
+    .hero-section { background-position: left center; }
     .hero-section .slogan { font-size: 2.5rem; }
     .hero-section .sub-slogan { font-size: 1.1rem; }
-
     .page-content h1 { font-size: 2.2rem; }
+    .profile-card { flex-direction: column; text-align: center; gap: 1.5rem; }
+    .qa-content { flex-direction: column; }
+    .qa-illustration { width: 100%; max-width: 350px; margin-bottom: 1.5rem; }
+    .qa-block.image-right .qa-content { flex-direction: column; }
+    .pricing-box .price { font-size: 3rem; }
 }

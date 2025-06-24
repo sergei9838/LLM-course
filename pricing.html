@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - LearnStatistics.online</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Link to your shared stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <input type="checkbox" id="menu-toggle">
+        <div class="nav-container container">
+            <a href="index.html" class="logo">
+                <img src="lso-logo.png" alt="LearnStatistics Online Logo">
+                <span class="logo-text">LearnStatistics<span class="logo-domain">.online</span></span>
+            </a>
+            <label for="menu-toggle" class="hamburger-menu">
+                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+            </label>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="how.html"><span class="short-text">How</span><span class="long-text">How the course is organised?</span></a></li>
+                    <li><a href="what.html"><span class="short-text">What</span><span class="long-text">What topics are covered?</span></a></li>
+                    <li><a href="who.html"><span class="short-text">Who</span><span class="long-text">Who are we?</span></a></li>
+                    <li><a href="pricing.html"><span class="short-text">How much</span><span class="long-text">How much?</span></a></li>
+                    <li><a href="qa.html"><span class="short-text">Q&A</span><span class="long-text">Frequently Asked Questions</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="page-content">
+            <div class="container">
+                <h1>How much does it cost?</h1>
+                
+                <div class="pricing-box">
+                    <div class="price">Absolutely Free!</div>
+                    <div class="price-note">For a limited time, get full access at no cost.</div>
+                    <p class="price-subtext">We are currently in our launch phase, which means you can enjoy the entire LSO system without any fees. After our full deployment, we plan to introduce a nominal charge to cover server and maintenance expenses, but for now, the knowledge is on us!</p>
+                </div>
+
+                <img src="pricing-illust.png" alt="Illustration of a piggy bank" class="featured-illustration">
+                
+                <div class="contact-box">
+                    <h2>Institutional Access</h2>
+                    <p>Are you an educator or part of an institution? Contact us to discuss arranging dedicated access to the platform for your students using the form below.</p>
+                    
+                    <!-- New Contact Form -->
+                    <form action="https://formspree.io/f/YOUR_UNIQUE_CODE" method="POST" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="institution">Institution (Optional)</label>
+                            <input type="text" id="institution" name="institution">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom CTA Section -->
+        <section class="bottom-cta-section">
+            <div class="action-button-container">
+                <div class="main-button">Start learning!</div>
+                <div class="split-buttons">
+                    <a href="https://learnstatistics.online/enroll" class="enroll-btn" target="_blank">Enrol</a>
+                    <a href="https://learnstatistics.online/login" class="login-btn" target="_blank">Log in</a>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+</body>
+</html>
