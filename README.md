@@ -1,1 +1,1 @@
-This is a concept of the landing page for online system for learning Statistics and Probability.
+Landing page for the online system for learning Statistics and Probability at https://learnstatistics.online
