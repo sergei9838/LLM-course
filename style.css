@@ -134,7 +134,8 @@ body { font-family: var(--font-body); color: var(--dark-text); background-color:
 }
 
 /* --- HERO SECTION (for index.html) --- */
-.hero-section { background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.6)), url('students-bg.jpg') no-repeat center center; background-size: cover; text-align: center; padding: 6rem 1rem; min-height: calc(100vh - var(--nav-height)); display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.hero-section 
+{ background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.6)), url('images/students-bg.jpg') no-repeat center center; background-size: cover; text-align: center; padding: 6rem 1rem; min-height: calc(100vh - var(--nav-height)); display: flex; flex-direction: column; justify-content: center; align-items: center; }
 .hero-section .slogan { font-family: var(--font-heading); font-size: 3.5rem; font-weight: 800; color: var(--accent-red); line-height: 1.2; max-width: 800px; margin-bottom: 1rem; text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
 .hero-section .sub-slogan { font-size: 1.2rem; max-width: 600px; color: #444; margin-bottom: 3rem; font-weight: 500; }
 .action-button-container { position: relative; display: inline-block; height: 60px; font-family: var(--font-heading); font-weight: 700; }
