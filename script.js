@@ -3,8 +3,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const testimonialsContainer = document.getElementById('testimonials-container');
 
     if (toggleButton && testimonialsContainer) {
-        // Initially hide testimonials
-        testimonialsContainer.style.display = 'none';
+        // Initially show testimonials
+        testimonialsContainer.style.display = 'grid';
+        toggleButton.textContent = 'Hide student testimonials';
 
         toggleButton.addEventListener('click', function() {
             if (testimonialsContainer.style.display === 'none') {
