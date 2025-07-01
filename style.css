@@ -4,6 +4,7 @@
 :root {
     --primary-teal: #6daeab;
     --accent-yellow: #ffcb04;
+    --pale-yellow: #ffebb1
     --accent-red: #9f2b3a; 
     --dark-text: #2c3e50;
     --light-text: #ffffff;
@@ -244,7 +245,8 @@ body { font-family: var(--font-body); color: var(--dark-text); background-color:
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: rgba(255, 203, 5, 0.15);
+    /* background: linear-gradient(to top, rgba(255, 203, 5, 0.3), rgba(255, 203, 5, 0.)); */
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
     padding: 15px 20px;
     display: flex;
