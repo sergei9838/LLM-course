@@ -19,39 +19,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// NEW: Active Navigation Scrolling Logic
+// Active Navigation Link Logic for Multi-Page Site
 document.addEventListener('DOMContentLoaded', () => {
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.main-nav a'); // Changed to .main-nav a
+    const navLinks = document.querySelectorAll('.main-nav a');
+    const currentPage = window.location.pathname.split('/').pop();
 
-    if (sections.length > 0 && navLinks.length > 0) {
-        const observerOptions = {
-            root: null, // relative to the viewport
-            rootMargin: '0px',
-            threshold: 0.5 // Trigger when 50% of the section is visible
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const sectionId = entry.target.id;
-
-                    // Remove active class from all links
-                    navLinks.forEach(link => {
-                        link.classList.remove('active');
-                    });
-
-                    // Add active class to the corresponding link
-                    const activeLink = document.querySelector(`.main-nav a[href="#${sectionId}"]`); // Changed to .main-nav a
-                    if (activeLink) {
-                        activeLink.classList.add('active');
-                    }
-                }
-            });
-        }, observerOptions);
-
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-    }
+    navLinks.forEach(link => {
+        const linkPage = link.getAttribute('href').split('/').pop();
+        if (linkPage === currentPage) {
+            link.classList.add('active');
+        }
+    });
 });
